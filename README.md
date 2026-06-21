@@ -1,117 +1,250 @@
-# 📂 Secure To-Do List CLI App
+# 🔐 Secure To-Do List
 
-A secure, command-line based to-do list manager built with Python. Designed with encryption, user authentication, and priority-based task organization. This app is a great way to manage your tasks while keeping your data safe.
+⚠️ **Disclaimer:** This project was developed for educational purposes to explore secure software development, authentication systems, encryption techniques, and cybersecurity concepts in Python. It is not intended for production use without additional security review, testing, and hardening.
 
-## 📜 Table of Contents
-- Description
-- Requirements
-- Features
-- Getting Started
-- File Structure
-- Example Use
-- Security Notes
-- About the Author
-- Support
-- License
-- Contributing
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Security](https://img.shields.io/badge/Security-Focused-green)
+![Encryption](https://img.shields.io/badge/Fernet-Encrypted-success)
+![Authentication](https://img.shields.io/badge/Argon2-Protected-orange)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
-## 📜 Description
-This is a simple command-line to-do list application that allows users to create, view, and manage tasks securely. The app uses AES encryption to protect user data and provides a user-friendly interface for managing tasks. It also supports encrypted logging and password hashing for maximum security. It allows users to create accounts, log in, and manage their tasks securely. Features include task prioritization, due dates, account system, encryption, and logging. Built with Python and the `cryptography` and `argon2-cffi` libraries.
+A security-focused command-line task management application built in Python. Over six iterations, the project evolved from a basic to-do list into a secure multi-user application featuring authentication, encrypted storage, password hashing, activity logging, and task organization tools.
 
-## 📦 Requirements
-- Python 3.x  
-- `cryptography` library  
-- `argon2-cffi` library  
-- Basic knowledge of:
-  - Python programming
-  - Command-line usage
-  - Encryption and hashing
-  - File handling
-  - Secure coding practices
+---
 
-## 🔒 Features
-✅ Account System — Create & log in securely  
-🔐 AES Encryption — Encrypts tasks, usernames with `Fernet`  
-🗝️ Per-User AES Keys — Unique key per account  
-🔒 Argon2 Password Hashing — High-security password hashing  
-🗓️ Due Dates — Add deadlines  
-⏳ Priority Sorting — High/Low task categorization  
-✔️ Task Status — Mark as done or pending  
-🧼 Auto-Cleanup Prompt — Clear list when all tasks complete  
-📃 Encrypted Logging — Logs actions in encrypted format  
-🔁 Retry Lock — 5 wrong login attempts = lockout  
-💾 Persistent Storage — Encrypted local file storage  
+# 🎯 Project Goals
 
-## 🧑‍💻 Getting Started
+This project was built to gain practical experience with:
 
-### 1. Clone the Repository
+- Secure authentication systems
+- Password hashing
+- Data encryption
+- Secure file storage
+- User account management
+- Defensive programming
+- Python application development
+- Software security practices
+
+Rather than focusing only on functionality, the project explores how cybersecurity concepts can be integrated into everyday software.
+
+---
+
+# ✨ Features
+
+## 👤 Account Management
+
+- User registration
+- User login
+- Multiple account support
+- Persistent account storage
+- Username hashing using SHA-256
+- User-specific task storage
+
+## 🔒 Security Features
+
+- Argon2 password hashing
+- Fernet encrypted task storage
+- SHA-256 username hashing
+- Login attempt limiting
+- Automatic password rehashing when required
+- Activity logging system
+- Secure credential handling
+- Separation of user data and task storage
+
+## ✅ Task Management
+
+- Add tasks
+- View tasks
+- Delete tasks
+- Clear task lists
+- Mark tasks as completed
+- Persistent task storage across sessions
+
+## 📋 Organization Features
+
+- High-priority tasks
+- Low-priority tasks
+- Due dates
+- Due times
+- Status tracking
+- Pending task reminders
+- Task filtering and display formatting
+
+## 💾 Data Persistence
+
+- Encrypted task storage
+- Automatic save/load functionality
+- Separate task files per user
+- Persistent credential storage
+- Activity logging
+
+---
+
+# 🛡 Security Implementation
+
+## Password Protection
+
+Passwords are secured using Argon2, a modern password hashing algorithm designed to resist brute-force and hardware-accelerated attacks.
+
+Passwords are never stored in plaintext.
+
+## Data Encryption
+
+Task data is encrypted using Fernet before being written to disk.
+
+This helps protect stored task information from casual inspection.
+
+## Username Protection
+
+Usernames are stored using SHA-256 hashes rather than plaintext identifiers.
+
+## Login Protection
+
+The application limits failed login attempts and introduces delays to reduce the effectiveness of simple brute-force attacks.
+
+## File Management
+
+The application stores credentials, encryption keys, logs, and task data in dedicated application directories to improve organization and separation of sensitive information.
+
+---
+
+# 🏗 Project Evolution
+
+This repository contains multiple versions documenting the development process.
+
+| Version | Main Focus |
+|----------|------------|
+| To-Do List 1.0 | Basic task management |
+| To-Do List 2.0 | Improved functionality |
+| To-Do List 3.0 | Better task organization |
+| To-Do List 4.0 | Expanded account features |
+| To-Do List 5.0 | Security improvements |
+| To-Do List 6.0 | Authentication, encryption, logging, and secure storage |
+
+Each version represents a step toward improved functionality, maintainability, and security.
+
+---
+
+# ⚙ Technologies Used
+
+| Technology | Purpose |
+|------------|----------|
+| Python | Core application |
+| Argon2 | Password hashing |
+| Cryptography (Fernet) | Data encryption |
+| SHA-256 | Username hashing |
+| File Handling | Persistent storage |
+| GitHub CodeQL | Static analysis |
+| GitHub Actions | Workflow automation |
+| Dependabot | Dependency monitoring |
+
+---
+
+# 📁 Repository Structure
+
+```text
+Todo-List/
+│
+├── PROJECT 1 (TO-DO LIST)
+├── PROJECT 2 (TO-DO LIST 2.0)
+├── PROJECT 3 (TODO LIST 3.0)
+├── PROJECT 4 (TODO LIST 4.0)
+├── PROJECT 5 (TO-DO LIST 5.0)
+├── PROJECT 6 (TO-DO LIST 6.0)
+│
+├── .github/
+│   ├── workflows/
+│   └── dependabot.yml
+│
+├── SECURITY.md
+├── LICENSE
+└── README.md
+```
+
+---
+
+# 🚀 Running the Project
+
+## Clone the Repository
+
 ```bash
 git clone https://github.com/Abhinav-Dash05/Todo-List.git
+```
+
+## Navigate to the Project
+
+```bash
 cd Todo-List
 ```
 
-### 2. Install Dependencies
+## Install Dependencies
+
 ```bash
-pip install cryptography argon2-cffi
+pip install argon2-cffi cryptography
 ```
 
-### 3. Run the App
+## Run Version 6
+
 ```bash
-python todo.py
+python "PROJECT 6 (TO-DO LIST 6.0)/TO-DO.py"
 ```
 
-> Replace `todo.py` with your filename if changed.
+---
 
-## 📁 File Structure
-```
-Todo-List/
-├── app-data/
-│   ├── credentials/       # Encrypted usernames & Argon2-hashed passwords
-│   ├── lists/             # Encrypted task files per user
-│   ├── keys/              # Per-user Fernet keys
-│   └── logs/              # Encrypted action and error logs per user
-├── todo.py                # Main app script
-├── README.md              # Project documentation
-```
+# 📚 Learning Outcomes
 
-## 🚀 Example Use
-```
-GOOD MORNING SIR. WHAT WOULD YOU LIKE ME TO DO?
-1. Create a new account
-2. Login
-...
-1. Add task
-2. Show tasks
-3. Delete task
-4. Show done
-5. Edit task
-6. Show pending tasks
-7. Mark task done
-8. Quit
-```
+Through this project I gained practical experience with:
 
-## 🔐 Security Notes
-- **Passwords** are hashed using **Argon2**, a memory-hard password hashing algorithm
-- **Tasks and usernames** are encrypted using **AES (Fernet)**
-- **Per-user encryption keys** are securely generated and stored
-- **Log files** are encrypted and include timestamped actions such as login attempts, task additions, deletions, and errors
-  ```
-  [2025-06-10 10:25] - Task "Buy milk" added.
-  [2025-06-10 10:31] - Login failed for user 'alice'.
-  ```
-- All files stored locally with tight permission control (`chmod 600` style if applicable)
+- Password hashing and verification
+- Encryption and secure storage
+- Authentication system design
+- Secure file handling
+- Activity logging
+- Multi-user application design
+- GitHub security tooling
+- Software maintenance and versioning
 
-## 👨‍💻 About the Author
-Made with patience, focus, and a love for Python by  
-**[Abhinav Dash](https://github.com/Abhinav-Dash05)**  
-🔗 GitHub Repo: [https://github.com/Abhinav-Dash05/Todo-List](https://github.com/Abhinav-Dash05/Todo-List)
+---
 
-## ⭐️ Support
-If you find this helpful, give it a ⭐ on GitHub!
+# 🔮 Future Improvements
 
-## 📜 License
-This project is licensed under the Apache License 2.0.  
-See the LICENSE file for more details.
+- Per-user encryption keys
+- Database backend
+- Graphical User Interface (GUI)
+- Two-factor authentication (2FA)
+- Secure password recovery
+- Audit log enhancements
+- Automated security testing
 
-## 🤝 Contributing
-Feel free to fork, improve, and submit pull requests.
+---
+
+# 🌐 Cybersecurity Relevance
+
+This project demonstrates the practical implementation of foundational cybersecurity concepts, including:
+
+- Authentication
+- Password security
+- Encryption
+- Secure storage
+- Access control
+- Security-focused software development
+
+While fundamentally a task management application, it was developed as a platform for learning and applying security principles in real software systems.
+
+---
+
+# 👨‍💻 Author
+
+**Abhinav Dash**
+
+Student Developer • Python Programmer • Cybersecurity Enthusiast
+
+---
+
+## License
+
+Copyright © 2025 Abhinav Dash
+
+Licensed under the Apache License, Version 2.0.
+
+See the LICENSE file for details.

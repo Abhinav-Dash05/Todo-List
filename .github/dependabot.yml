@@ -1,25 +1,7 @@
 version: 2
+
 updates:
-  - package-ecosystem: "pip"
-    directory: "/"  # Adjust if your requirements.txt is in a subfolder
-    schedule:
-      interval: "weekly"  # Can be "daily", "weekly", or "monthly"
-    open-pull-requests-limit: 5
-    commit-message:
-      prefix: "deps"
-    rebase-strategy: "auto"
-    ignore:
-      - dependency-name: "cryptography"
-        versions: ["<41.0.0"]
-      - dependency-name: "argon2-cffi"
-        versions: ["<21.3.0"]  # Ignore very old, insecure versions
-    allow:
-      - dependency-type: "direct"
   - package-ecosystem: "github-actions"
-    directory: "/"  # Keeps GitHub Actions workflows updated
+    directory: "/"
     schedule:
       interval: "weekly"
-
-# 🔐 Security Notes:
-# - This config tracks direct dependencies only.
-# - File permissions (e.g., chmod 600) must still be enforced in code/scripts — Dependabot doesn’t manage file-level ACLs.
